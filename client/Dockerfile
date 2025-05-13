@@ -1,7 +1,7 @@
-FROM node:alpine as builder
-WORKDIR '/app'
+FROM node:20-buster as builder
+WORKDIR "/app"
 COPY ./package.json ./
-RUN npm install
+RUN npm set registry https://registry.yarnpkg.com && npm install
 COPY . .
 RUN npm run build
 
