@@ -22,6 +22,7 @@ jobs:
       - name: Build Docker image for prod
         run: |
              docker build -t 8753/client:latest -f ./client/Dockerfile ./client
+             docker build -t 8753/nginx -f ./nginx/Dockerfile ./nginx 
              docker build -t 8753/server -f ./server/Dockerfile ./server 
              docker build -t 8753/worker -f ./worker/Dockerfile ./worker      
       - name: Push to dockerhub
@@ -29,5 +30,6 @@ jobs:
           docker push 8753/client:latest
           docker push 8753/server
           docker push 8753/worker
+          docker push 8753/nginx
                
     
