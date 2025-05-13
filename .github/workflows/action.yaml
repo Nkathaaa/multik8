@@ -21,15 +21,13 @@ jobs:
             password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build Docker image for prod
         run: |
-             docker build -t 8753/multiclient:latest -f ./client/Dockerfile ./client
-             docker build -t 8753/multinginx -f ./nginx/Dockerfile ./nginx 
-             docker build -t 8753/multiserver -f ./server/Dockerfile ./server 
-             docker build -t 8753/multiworker -f ./worker/Dockerfile ./worker      
+             docker build -t 8753/client:latest -f ./client/Dockerfile ./client
+             docker build -t 8753/server -f ./server/Dockerfile ./server 
+             docker build -t 8753/worker -f ./worker/Dockerfile ./worker      
       - name: Push to dockerhub
         run: |
-          docker push 8753/multiclient:latest
-          docker push 8753/multinginx
-          docker push 8753/multiserver
-          docker push 8753/multiworker
+          docker push 8753/client:latest
+          docker push 8753/server
+          docker push 8753/worker
                
     
